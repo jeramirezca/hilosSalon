@@ -92,7 +92,8 @@ public class Profesor {
             }
         }
         
-        // IMPRIMIR LLAMAR LISTA
+        System.out.println("LOS ESTUDIANTES QUE SIGUEN EN CLASE Y LOS QUE SALIERON");
+        System.out.println("\n" +listaClase);
     }
     
     

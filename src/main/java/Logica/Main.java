@@ -4,8 +4,9 @@ package Logica;
 import Datos. *;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
-public class Main extends Thread{
+public class Main{
     public void InstanciarObjetos(){
         Estudiante estudiante1 = new Estudiante("Juan Manuel");
         Estudiante estudiante2 = new Estudiante("Simón Ramos");
@@ -41,7 +42,10 @@ public class Main extends Thread{
     }
     
     public static void main(String[] arqs){
-    
+        HashMap<String, Boolean> prueba = new HashMap();
+        prueba.put("xd", false);
+        prueba.put("l", true);
+        System.out.println(prueba);
     }
     
     
