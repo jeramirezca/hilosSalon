@@ -12,14 +12,18 @@ public class Estudiante {
     private String actividadActual;
 
     public void hacerAlgo(){
-        Random actividad = new Random();
-        this.setActividadActual("hol");
-        this.distraerse(0);
+        Random randomGenerate = new Random();
+        
+        int indice = randomGenerate.nextInt(actividades.size() - 1);
+        this.setActividadActual(actividades.get(indice));
+        this.distraerse(indice);
     }
     
-    public void distraerse(int actividad){
-        if (actividad/2==0){
+    public void distraerse(int indice){
+        if (indice%2==0){
             this.setAtencion(false);
+        }else{
+            this.setAtencion(true);
         }
     }
     
@@ -39,7 +43,7 @@ public class Estudiante {
         this.salonClase = salonClase;
     }
 
-    public boolean isAtencion() {
+    public boolean getAtencion() {
         return atencion;
     }
 
@@ -72,7 +76,7 @@ public class Estudiante {
     actividades.add("jugar");
     actividades.add("dormir");
     actividades.add("hablar");
-    actividades.add("pensar");
+  
     }
     
 }

@@ -18,8 +18,7 @@ public class Main extends Thread {
         Estudiante estudiante9 = new Estudiante("Juana Gonzalez");
         Estudiante estudiante10 = new Estudiante("Camila Natalia Pinzón");
         
-        ArrayList<String> actividades = new ArrayList(Arrays.asList("Calificando",
-                "Leyendo", "Tomando Tinto"));
+        ArrayList<String> actividades = new ArrayList<String>(Arrays.asList("Calificando","Tomando Tinto", "Leyendo","regañar"));
         
         Profesor profesor1 = new Profesor("Matemáticas", "Arcenio Pecha", true,
             actividades);
@@ -35,8 +34,11 @@ public class Main extends Thread {
         ArrayList<Estudiante> estSalon2 = new ArrayList<Estudiante>(
         Arrays.asList(estudiante6,estudiante7,estudiante8,estudiante9,estudiante10));
         
-        Salon salon1 = new Salon(1, estSalon1, true, 120000);
-        Salon salon2 = new Salon(2,estSalon2, true, 120000);
+        Salon salon1 = new Salon(1, estSalon1, true, 12000);
+        Salon salon2 = new Salon(2,estSalon2, true, 12000);
+
+        profesor1.setSalonClases(salon1);
+        profesor2.setSalonClases(salon2);
         salon1.setProfesorActual(profesor1);
         salon2.setProfesorActual(profesor2);
         System.out.println("Hola mundo");

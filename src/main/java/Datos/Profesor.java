@@ -58,12 +58,8 @@ public class Profesor {
     // METODOS DE LA CLASE
         
     public void Reganiar(){
-        Salon salonClase = getSalonClases();
-        ArrayList<Estudiante> estudiantes = salonClase.getEstudiantesActuales();
-        for(Estudiante estudiante : estudiantes){
-            estudiante.setAtencion(true);
-        }
-        
+      //  Salon salonClase = getSalonClases();
+      //  ArrayList<Estudiante> estudiantes = salonClase.getEstudiantesActuales();
         System.out.println("PONGAN ATENCIÓN !!!");
     }
     
