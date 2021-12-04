@@ -13,24 +13,23 @@ public class Salon extends Thread {
     private long tiempoClase;
 
 
-    public Salon(int  numero, ArrayList<Estudiante> lista, Profesor profesor, boolean disponibilidad, long tiempoClase){
+    public Salon(int  numero, ArrayList<Estudiante> lista,  boolean disponibilidad, long tiempoClase){
         this.setNumeroSalon(numero);
         this.setDisponibilidad(disponibilidad);
         this.setEstudiantes(lista);
         this.setEstudiantesActuales(lista);
-        this.setProfesorActual(profesor);
+       // this.setProfesorActual(profesor);
         this.setTiempoClase(tiempoClase); 
     }
 
     public Salon(){
-        this(0, new ArrayList<Estudiante>(), new Profesor(), true, 1000 );
+        this(0, new ArrayList<Estudiante>(), true, 1000 );
         
     }
 
     @Override
     public void run(){
-            //La idea es que desde el metodo run de esta clase se llamen a los demás métodos de las clases estudiante
-            //y profesor, tipo que desde este hilo se creen otros subhilos
+            System.out.println(this);
     }
 
     public long getTiempoClase() {
@@ -121,9 +120,5 @@ public class Salon extends Thread {
         + "\n Numero de estudiantos "+ imprimirEstudianteEnClase();
         return informacion;
     }
-    
-    
 
-
-    
 }

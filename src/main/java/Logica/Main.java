@@ -1,12 +1,12 @@
 
 package Logica;
 
-import Datos. *;
+import Datos.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Main extends Thread{
-    public void InstanciarObjetos(){
+public class Main extends Thread {
+    public static void InstanciarObjetos(){
         Estudiante estudiante1 = new Estudiante("Juan Manuel");
         Estudiante estudiante2 = new Estudiante("Simón Ramos");
         Estudiante estudiante3 = new Estudiante("Jefferson Ramírez");
@@ -35,14 +35,17 @@ public class Main extends Thread{
         ArrayList<Estudiante> estSalon2 = new ArrayList<Estudiante>(
         Arrays.asList(estudiante6,estudiante7,estudiante8,estudiante9,estudiante10));
         
-        Salon salon1 = new Salon(1, estSalon1, profesor1, true, 120000);
-        Salon salon2 = new Salon(2,estSalon2, profesor1, true, 120000);
-       
+        Salon salon1 = new Salon(1, estSalon1, true, 120000);
+        Salon salon2 = new Salon(2,estSalon2, true, 120000);
+        salon1.setProfesorActual(profesor1);
+        salon2.setProfesorActual(profesor2);
+        System.out.println("Hola mundo");
+        salon1.start();
+        salon2.start();
     }
-    
-    public static void main(String[] arqs){
-    
+
+    public static void main(String[] arqs) {
+        InstanciarObjetos();
     }
-    
-    
+
 }

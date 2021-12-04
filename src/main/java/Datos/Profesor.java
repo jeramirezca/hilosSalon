@@ -122,7 +122,7 @@ public class Profesor {
         this.setMateriaDictada(materia);
         this.setNombre(nombre);
         this.setDictaClase(dictar);
-        this.setSalonClases(new Salon());
+        //this.setSalonClases(new Salon());
         this.setActividades(actividades);
     }
     
