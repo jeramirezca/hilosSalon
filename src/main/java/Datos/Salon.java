@@ -7,9 +7,9 @@ public class Salon extends Thread {
     private int numeroSalon;
     private ArrayList<Estudiante> estudiantes;
     private ArrayList<Estudiante> estudiantesActuales;
+    private ArrayList<Profesor> profesores;
     private Profesor profesorActual;
     private boolean disponibilidad;
-    private long tiempoClase;
 
     public Salon(int numero, ArrayList<Estudiante> lista, boolean disponibilidad, long tiempoClase) {
         this.setNumeroSalon(numero);
@@ -17,20 +17,12 @@ public class Salon extends Thread {
         this.setEstudiantes(lista);
         this.setEstudiantesActuales(lista);
         // this.setProfesorActual(profesor);
-        this.setTiempoClase(tiempoClase);
+
     }
 
     public Salon() {
         this(0, new ArrayList<Estudiante>(), true, 1000);
 
-    }
-
-    public long getTiempoClase() {
-        return tiempoClase;
-    }
-
-    public void setTiempoClase(long tiempoClase) {
-        this.tiempoClase = tiempoClase;
     }
 
     public boolean getDisponibilidad() {
@@ -47,6 +39,14 @@ public class Salon extends Thread {
 
     public void setProfesorActual(Profesor profesorActual) {
         this.profesorActual = profesorActual;
+    }
+
+    public ArrayList<Profesor> getProfesores() {
+        return this.profesores;
+    }
+
+    public void setProfesores(ArrayList<Profesor> profesores) {
+        this.profesores = profesores;
     }
 
     public ArrayList<Estudiante> getEstudiantesActuales() {
@@ -77,25 +77,38 @@ public class Salon extends Thread {
         ArrayList<Estudiante> currentList = this.getEstudiantesActuales();
         currentList.remove(sale);
         this.setEstudiantesActuales(currentList);
+        System.out.println("El estudiante "+ sale.getNombre()+" salio de la clase "+ sale.getSalonClase());
 
     }
 
-    public void entrarEstudiante(Estudiante entra) {
+    public void entrarEstudiante() {
+        ArrayList<Estudiante> realList = this.getEstudiantes();
         ArrayList<Estudiante> currentList = this.getEstudiantesActuales();
-        currentList.add(entra);
-        this.setEstudiantesActuales(currentList);
+        for(Estudiante estudianteFaltante: realList){
+            if(currentList.contains(estudianteFaltante)== false){
+                currentList.add(estudianteFaltante);
+                this.setEstudiantesActuales(currentList);
+                System.out.println("El estudiante "+ estudianteFaltante.getNombre()+" volvio a la clase "+ estudianteFaltante.getSalonClase());
+            }
+            
+        }
+        
     }
+    
+     // public void entrarProfesor(Profesor entra) {
+     // this.setProfesorActual(entra);
+     // pendiente ponerle nombre al profesor
+     //System.out.println("Ha entrado el profesor "+
+     // this.getProfesorActual()+"  al salon " + this.getNumeroSalon() + "-------");
+      //}
+     
 
-    public void entrarProfesor(Profesor entra) {
-        this.setProfesorActual(entra);
-        // pendiente ponerle nombre al profesor
-        System.out.println("Ha entrado el profesor  al salon " + this.getNumeroSalon() + "-------");
-    }
-
-    public void salirProfesor(Profesor sale) {
-        Profesor nadie = new Profesor();
-        this.setProfesorActual(nadie);
-        System.out.println("---------El profesor se ha ido--------");
+    public void cambioProfesor() {
+        System.out.println("---------El profesor " + this.getProfesorActual().getNombre() + " se ha ido--------");
+        Profesor profesorNuevo = profesores.get(numeroRandom(profesores.size()));
+        profesorNuevo.setSalonClases(this);
+        this.setProfesorActual(profesorNuevo);
+        
     }
 
     public int imprimirEstudianteEnClase() {
@@ -104,16 +117,21 @@ public class Salon extends Thread {
         return numero;
     }
 
-    public int contarHoras(int i) {
-        i += 2;
-        return i;
-    }
+    
 
     public int numeroRandom(int tamanio) {
         Random randomGenerate = new Random();
         int num = randomGenerate.nextInt(tamanio);
         return num;
+    }
 
+    public void esperar(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -128,29 +146,51 @@ public class Salon extends Thread {
 
     @Override
     public void run() {
-        System.out.println("-------------");
-        System.out.println(this.toString());
-        System.out.println("-------------");
-        int i = 12;
-        System.out.println("La clase de " + this.getProfesorActual().getMateriaDictada() + " comenzó en el salon "
-                + this.getNumeroSalon() + " a las " + i + " horas");
+        System.out.println("BIENVENID@ A LA ESCUELITA DE DOÑA RITA");
+        int cantidadClases = 3;
+        int horaDia = 8;
+        while (cantidadClases > 0) {
+            System.out.println("-------------");
+            System.out.println(this.toString());
+            System.out.println("-------------");
+            System.out.println("La clase de " + this.getProfesorActual().getMateriaDictada() + " comenzó en el salon "
+                    + this.getNumeroSalon() + " a las " + horaDia + " horas");
+            esperar();
+            for (int u = 0; u < 2; u++) {
+                if(u>0) entrarEstudiante();
 
-        for (int u = 1; u < 5; u++) {
-            int estudiantesHay = this.estudiantesActuales.size() - 1;
-            Estudiante estudiante = this.estudiantesActuales.get(numeroRandom(estudiantesHay));
-            Estudiante estudiante2 = this.estudiantesActuales.get(numeroRandom(estudiantesHay));
-            estudiante.hacerAlgo();
-            Profesor pecha = this.getProfesorActual();
-            pecha.HacerAlgo();
-            if (estudiante.getAtencion() == false) {
-                pecha.Reganiar();
+                System.out.println("----------------------------------------------------------------------------------------------") ;
+                System.out.println("Son las " + horaDia + " horas y Hay " + this.getEstudiantesActuales().size()+ " estudiantes en clase de " + this.getProfesorActual().getMateriaDictada());
+                esperar() ;
+                int estudiantesHay = this.estudiantesActuales.size();
+                //System.out.println(estudiantesHay);
+                Estudiante estudiante = this.estudiantesActuales.get(estudiantesHay-1);
+                Estudiante estudiante2 = this.estudiantesActuales.get(estudiantesHay-1);
+                estudiante.hacerAlgo();
+
+                if(this.estudiantesActuales.size()>2)salirEstudiante(estudiante2);
+                
+                esperar();
+                Profesor pecha = this.getProfesorActual();
+                pecha.HacerAlgo();
+               esperar();
+                if (estudiante.getAtencion() == false) {
+                    pecha.Reganiar();
+                    esperar();
+                }
+                if (u == 0) {
+                    pecha.LlamarLista(this.getEstudiantesActuales());
+                    esperar();
+                }
+                horaDia++;
             }
-            salirEstudiante(estudiante2);
+            System.out.println("------------------------------------------------------------------------");
+            System.out.println("La clase de " + this.getProfesorActual().getMateriaDictada() + " termino en el salón "
+                    + this.getNumeroSalon() + " a las " + horaDia + " horas");
+            cambioProfesor();
+            esperar();
+            cantidadClases--;
+            
         }
-
-        System.out.println("La clase de " + this.getProfesorActual().getMateriaDictada() + " termino en el salon"
-                + this.getNumeroSalon() + "a las" + (System.currentTimeMillis()) / 1000 + "horas");
-
     }
-
 }
