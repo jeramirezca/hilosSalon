@@ -81,7 +81,7 @@ public class Profesor {
     public void LlamarLista( ArrayList<Estudiante> estudiantes){
         Salon salonClase = getSalonClases();
         
-        ArrayList<Estudiante> estudiantesSalon = salonClase.getEstudiantesActuales;
+        ArrayList<Estudiante> estudiantesSalon = salonClase.getEstudiantesActuales();
         HashMap< Estudiante , Boolean> listaClase = new HashMap<Estudiante, Boolean>();
         
         for(Estudiante estudiante : estudiantes){
@@ -117,17 +117,17 @@ public class Profesor {
     }
     // CONSTRUCTORES
     
-    public Profesor(String materia, String nombre, boolean dictar, Salon salon,
+    public Profesor(String materia, String nombre, boolean dictar,
             ArrayList<String> actividades){     
         this.setMateriaDictada(materia);
         this.setNombre(nombre);
         this.setDictaClase(dictar);
-        this.setSalonClases(salon);
+        this.setSalonClases(new Salon());
         this.setActividades(actividades);
     }
     
     public Profesor(){
-    this("Ninguna", "Desconocido", false, new Salon(), new ArrayList<String>());
+    this("Ninguna", "Desconocido", false, new ArrayList<String>());
     }
     
     // METODO toString
