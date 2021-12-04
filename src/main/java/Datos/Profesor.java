@@ -81,7 +81,7 @@ public class Profesor {
     public void LlamarLista( ArrayList<Estudiante> estudiantes){
         Salon salonClase = getSalonClases();
         
-        ArrayList<Estudiante> estudiantesSalon = salonClase.getEstudiantesActuales;
+        ArrayList<Estudiante> estudiantesSalon = salonClase.getEstudiantesActuales();
         HashMap< Estudiante , Boolean> listaClase = new HashMap<Estudiante, Boolean>();
         
         for(Estudiante estudiante : estudiantes){

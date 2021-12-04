@@ -1,4 +1,4 @@
-clpackage Datos;
+package Datos;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -62,7 +62,5 @@ public class Estudiante {
     public void setActividadActual(String actividadActual) {
         this.actividadActual = actividadActual;
     }
-    
-    
     
 }
