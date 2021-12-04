@@ -37,6 +37,11 @@ public class Main extends Thread{
         
         Salon salon1 = new Salon(1, estSalon1, profesor1, true, 120000);
         Salon salon2 = new Salon(2,estSalon2, profesor1, true, 120000);
+       
+    }
+    
+    public static void main(String[] arqs){
+    
     }
     
     
