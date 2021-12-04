@@ -63,4 +63,16 @@ public class Estudiante {
         this.actividadActual = actividadActual;
     }
     
+    // CONSTRUCTORES
+    public Estudiante(String nombre){     
+    this.nombre = nombre;
+    this.atencion = true;
+    this. actividades = new ArrayList<String>();;
+    actividades.add("leer");
+    actividades.add("jugar");
+    actividades.add("dormir");
+    actividades.add("hablar");
+    actividades.add("pensar");
+    }
+    
 }

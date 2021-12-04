@@ -117,10 +117,12 @@ public class Salon extends Thread {
         Profesor mostrando = this.getProfesorActual();
         String informacion= " ";
         informacion += "Salon numero " + this.getNumeroSalon()
-       // + "\n Profesor actual " + mostrando.getNombre()+ " \n Clase" + mostrando.getMateriaDictada() 
+        + "\n Profesor actual " + mostrando.getNombre()+ " \n Clase" + mostrando.getMateriaDictada() 
         + "\n Numero de estudiantos "+ imprimirEstudianteEnClase();
         return informacion;
     }
+    
+    
 
 
     
