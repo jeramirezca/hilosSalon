@@ -77,6 +77,7 @@ public class Profesor {
 
         ArrayList<Estudiante> estudiantesSalon = salonClase.getEstudiantesActuales();
         HashMap<Estudiante, Boolean> listaClase = new HashMap<Estudiante, Boolean>();
+        System.out.println("-------------------------------------------------------------------------");
         System.out.println(
                 "El profesor " + this.getNombre() + " Esta llamando lista en clase de " + this.getMateriaDictada());
         for (Estudiante estudiante : estudiantes) {
@@ -85,10 +86,10 @@ public class Profesor {
                 System.out.println("El estudiante " + estudiante.getNombre() + " Esta en el salon "+ this.getSalonClases().getNumeroSalon());
             } else {
                 listaClase.put(estudiante, false);
-                System.out.println("El estudiante " + estudiante.getNombre() + " Esta en el salon "+ this.getSalonClases().getNumeroSalon());
+                System.out.println("El estudiante " + estudiante.getNombre() + " NO esta en el salon "+ this.getSalonClases().getNumeroSalon());
             }
         }
-
+        
         // IMPRIMIR LLAMAR LISTA
     }
 

@@ -27,7 +27,7 @@ public class Estudiante {
     }
 
     public void distraerse(int indice) {
-        if (indice % 2 == 0) {
+        if (indice % 2 != 0) {
             this.setAtencion(false);
         } else {
             this.setAtencion(true);
